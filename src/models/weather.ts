@@ -4,14 +4,13 @@ import {
   LocalTime,
   WeatherDetails,
 } from "./types";
-
 export async function fetchWeather(location: LocationDetails) {
-  const response = await fetch(
-    "https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=" +
-      location.latitude +
-      "&lon=" +
-      location.longitude
-  );
+	const response = await fetch(
+		"https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=" +
+			location.latitude +
+			"&lon=" +
+			location.longitude
+	);
 
   const data = await response.json();
   const forecast: LocationForecast = {
@@ -36,12 +35,12 @@ export async function fetchWeather(location: LocationDetails) {
 }
 
 export const myLocation = {
-  name: "TheCity",
-  country: "SomeCountry",
-  admin: "Neverland Gardens", // calculated from admin1, admin2, admin3
-  latitude: 66.97, //Math.random() * 90,
-  longitude: 23.964, //Math.random() * 180,
-  timezone: "Europe/Riga",
+	name: "TheCity",
+	country: "SomeCountry",
+	admin: "Neverland Gardens", // calculated from admin1, admin2, admin3
+	latitude: 66.97, //Math.random() * 90,
+	longitude: 23.964, //Math.random() * 180,
+	timezone: "Europe/Riga",
 };
 
 const myLocalTime = {
