@@ -1,12 +1,8 @@
-//Testing geocode api
+import { app } from "./app";
+import { fetchWeather, myLocation } from "./models/weather";
 
-async function fetchGeoLocation() {
-  const response = await fetch(
-    "https://geocoding-api.open-meteo.com/v1/search?name=London&count=10https://geocoding-api.open-meteo.com/v1/search?name=London&count=1"
-  );
+export const server = app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});
 
-  const data = await response.json();
-  console.log(data);
-}
-
-fetchGeoLocation();
+fetchWeather(myLocation);
