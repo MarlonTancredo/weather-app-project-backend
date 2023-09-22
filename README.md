@@ -21,3 +21,9 @@ Starting project with: npm start
 
 Testing: npm test
 ```
+
+## Using api:
+
+```
+http://localhost:3000/geo-location/?cityName=London
+```
