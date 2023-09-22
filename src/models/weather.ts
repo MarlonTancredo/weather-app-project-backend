@@ -4,7 +4,7 @@ import {
 	LocalTime,
 	WeatherDetails,
 } from "./types";
-async function fetchWeather(location: LocationDetails) {
+export async function fetchWeather(location: LocationDetails) {
 	const response = await fetch(
 		"https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=" +
 			location.latitude +
@@ -38,7 +38,7 @@ async function fetchWeather(location: LocationDetails) {
 	console.log(data.timeseries, forecast);
 }
 
-const myLocation = {
+export const myLocation = {
 	name: "TheCity",
 	country: "SomeCountry",
 	admin: "Neverland Gardens", // calculated from admin1, admin2, admin3
@@ -54,4 +54,3 @@ const myLocalTime = {
 	minute: 39,
 	dayOfWeek: "Saturday",
 };
-fetchWeather(myLocation);
