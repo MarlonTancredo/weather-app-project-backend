@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getGeoLocationService } from "../services/get_geo_location";
-import { getWeatherService } from "../services/get_weather_forecast";
+import { getWeatherService } from "../services/get_weather_service";
 
 export const getWeatherInformation = async (
   req: Request<object, object, object, { cityName: string | undefined }>,
