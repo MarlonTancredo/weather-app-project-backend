@@ -115,8 +115,8 @@ export type LocationDetails = {
 };
 export type LocationForecast = {
 	updated_at: string; //from properties.meta.updated_at
-	location: LocationDetails;
-	local_time: LocalTime;
-	current_day: WeatherDetails; // from current time til
-	timeseries: WeatherDetails[];
+	location?: LocationDetails;
+	local_time?: LocalTime;
+	current_day?: WeatherDetails; // from current time til
+	timeseries?: WeatherDetails[];
 };
