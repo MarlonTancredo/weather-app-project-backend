@@ -1,10 +1,27 @@
-export const getGeoLocation = (cityName = "London") => {
+export const getGeoLocationService = async (cityName = "London") => {
+  const response = await fetch(
+    `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1`
+  );
+  const data = await response.json();
+  const {
+    id,
+    name,
+    latitude,
+    longitude,
+    country,
+    country_code,
+    timezone,
+    population,
+  } = data.results[0];
+
   return {
-    cityName,
-    latitude: "52.52437",
-    longitude: "13.41053",
+    id: id,
+    name: name,
+    latitude: latitude,
+    longitude: longitude,
+    timezone: timezone,
+    population: population,
+    country: country,
+    countryCode: country_code,
   };
 };
-
-//We will return to the user an abject with all  weather information related to city passed in the end point.
-// I am currently creating the logic.
