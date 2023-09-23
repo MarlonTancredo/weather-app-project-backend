@@ -1,27 +1,21 @@
-export const getGeoLocationService = async (cityName = "London") => {
+import { LocationDetails } from "../models/types";
+
+export const getGeoLocationService = async (
+  cityName = "London"
+): Promise<LocationDetails> => {
   const response = await fetch(
     `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1`
   );
   const data = await response.json();
-  const {
-    id,
-    name,
-    latitude,
-    longitude,
-    country,
-    country_code,
-    timezone,
-    population,
-  } = data.results[0];
+  const { name, admin1, latitude, longitude, country, timezone } =
+    data.results[0];
 
   return {
-    id: id,
     name: name,
+    admin: admin1,
+    country: country,
     latitude: latitude,
     longitude: longitude,
     timezone: timezone,
-    population: population,
-    country: country,
-    countryCode: country_code,
   };
 };
