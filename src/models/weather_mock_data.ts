@@ -1,4 +1,4 @@
-const mockWeatherData = {
+export const mockWeatherData = {
 	type: "Feature",
 	geometry: {
 		type: "Point",
