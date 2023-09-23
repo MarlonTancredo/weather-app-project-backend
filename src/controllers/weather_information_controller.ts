@@ -6,12 +6,16 @@ export const getWeatherInformation = async (
   req: Request<object, object, object, { cityName: string | undefined }>,
   res: Response
 ) => {
-  const cityName = req.query.cityName;
+  try {
+    const cityName = req.query.cityName;
 
-  const geoLocation = await getGeoLocationService(cityName);
-  const { latitude, longitude } = geoLocation;
+    const geoLocation = await getGeoLocationService(cityName);
+    const { latitude, longitude } = geoLocation;
 
-  const weatherInformation = await getWeatherService(latitude, longitude);
+    const weatherInformation = await getWeatherService(latitude, longitude);
 
-  res.json({ geoLocation, weatherInformation }).status(200);
+    res.json({ geoLocation, weatherInformation }).status(200);
+  } catch ({ message }: any) {
+    res.json(message);
+  }
 };
