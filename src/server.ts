@@ -1,8 +1,8 @@
 import { app } from "./app";
-import { fetchWeatherFromAPI } from "./repository/fetch_weather_from_api";
+import { getWeatherForecast } from "./services/get_weather_forecast";
 
 export const server = app.listen(3000, async () => {
 	console.log("Server running on port 3000");
-	const f = await fetchWeatherFromAPI(56, 23.9);
+	const f = await getWeatherForecast(56, 23.9);
 	//console.log(f);
 });
