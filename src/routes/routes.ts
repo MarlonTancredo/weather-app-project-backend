@@ -1,6 +1,6 @@
 import express from "express";
-import * as geoLocationController from "../controllers/geo_location_controller";
+import * as geoLocationController from "../controllers/weather_information_controller";
 
 export const router = express.Router();
 
-router.get("/geo-location", geoLocationController.getGeoLocation);
+router.get("/weather", geoLocationController.getWeatherInformation);
