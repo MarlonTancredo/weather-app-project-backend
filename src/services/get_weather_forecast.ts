@@ -3,7 +3,16 @@ import { fetchWeatherFromAPI } from "../repository/fetch_weather_from_api";
 
 export async function getWeatherForecast(latitude: number, longitude: number) {
 	const data = await fetchWeatherFromAPI(latitude, longitude);
-	console.log("getWeatherForecast works");
+  console.log("getWeatherForecast works");
+
+  const { updated_at } = data.properties.meta;
+
+  const { air_temperature, wind_from_direction, wind_speed } =
+		data.properties.timeseries[0].data.instant.details;
+
+  const { symbol_code } =
+		data.properties.timeseries[0].data.next_12_hours.summary;
+
 	// find current_day.high_air_temperature
 	const currentDayHighAirTemperature = 20;
 	console.log(
@@ -14,23 +23,16 @@ export async function getWeatherForecast(latitude: number, longitude: number) {
 	);
 	// find current_day.low_air_temperature
 	const currentDayLowhAirTemperature = 0;
-	const weatherForecast: LocationForecast = {
-		updated_at: data.properties.meta.updated_at,
+
+  return {
+		updated_at: updated_at,
 		current_day: {
-			current_air_temperature:
-				data.properties.timeseries[0].data.instant.details
-					.air_temperature,
-			high_air_temperature: currentDayHighAirTemperature, // celsius
-			low_air_temperature: currentDayLowhAirTemperature, // celsius
-			wind_from_direction:
-				data.properties.timeseries[0].data.instant.details
-					.wind_from_direction, // degrees - (0° is north, 90° east, etc.)
-			wind_speed:
-				data.properties.timeseries[0].data.instant.details.wind_speed, // m/s
-			symbol_code:
-				data.properties.timeseries[0].data.next_12_hours.summary
-					.symbol_code,
+			current_air_temperature: air_temperature, // celsius
+			high_air_temperature: currentDayHighAirTemperature,
+			low_air_temperature: currentDayLowhAirTemperature,
+			wind_from_direction: wind_from_direction, // degrees - (0° is north, 90° east, etc.)
+			wind_speed: wind_speed, // m/s
+			symbol_code: symbol_code,
 		},
-	};
-	return weatherForecast;
+  };
 }
