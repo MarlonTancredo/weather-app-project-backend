@@ -22,12 +22,13 @@ export const getWeatherService = async (
     data.properties.timeseries[0].data.next_12_hours.summary;
 
   return {
-    updated_at: updated_at,
-    current_air_temperature: air_temperature,
-    wind_from_direction: wind_from_direction,
-    wind_speed: wind_speed,
-    high_air_temperature: air_temperature_max,
-    low_air_temperature: air_temperature_min,
-    symbol_code: symbol_code,
+		updated_at: updated_at,
+		// it is not exactly the same type. we need current day and timeseries
+		current_air_temperature: air_temperature,
+		wind_from_direction: wind_from_direction,
+		wind_speed: wind_speed,
+		high_air_temperature: air_temperature_max,
+		low_air_temperature: air_temperature_min,
+		symbol_code: symbol_code,
   };
 };
