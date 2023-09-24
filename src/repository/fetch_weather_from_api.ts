@@ -3,11 +3,7 @@ export const fetchWeatherFromAPI = async (
 	longitude: number
 ) => {
 	console.log("lat=" + latitude + ", lon=" + longitude);
-	const requestString =
-		"https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=" +
-		latitude +
-		"&lon=" +
-		longitude;
+	const requestString = `https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${latitude}&lon=${longitude}`;
 	try {
 		const response = await fetch(requestString);
 		if (response.ok) {
