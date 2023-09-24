@@ -1,10 +1,11 @@
 export type WeatherDetails = {
-  current_air_temperature?: number; // celsius
-  high_air_temperature?: number; // celsius
-  low_air_temperature: number; // celsius
-  wind_from_direction?: number; // degrees - (0° is north, 90° east, etc.)
-  wind_speed?: number; // m/s
-  symbol_code: string;
+	time?: string;
+	current_air_temperature?: number; // celsius
+	high_air_temperature?: number; // celsius
+	low_air_temperature: number; // celsius
+	wind_from_direction?: number; // degrees - (0° is north, 90° east, etc.)
+	wind_speed?: number; // m/s
+	symbol_code: string;
 };
 
 export type LocalTime = {
