@@ -8,8 +8,7 @@ export const fetchWeatherFromAPI = async (
 		const response = await fetch(requestString);
 		if (response.ok) {
 			console.log("Fetched: " + requestString);
-			const data = await response.json();
-			return data;
+			return await response.json();
 		} else {
 			console.log(requestString);
 			console.log(response.status, response.statusText);
