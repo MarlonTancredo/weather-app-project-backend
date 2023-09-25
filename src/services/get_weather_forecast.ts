@@ -30,7 +30,7 @@ export async function getWeatherForecast(
 	const nextMorning = new Date(localTime);
 	nextMorning.setDate(localTime.getDate() + 1);
 	nextMorning.setHours(9, 0, 0); // Local time
-	const nextMorningString = nextMorning.toISOString().substring(0, 19) + "Z"; // UTC
+	let nextMorningString = nextMorning.toISOString().substring(0, 19) + "Z"; // UTC
 
 	// console.log("timeseries[0] " + todayUTC.toString());
 	// console.log("localTime" + localTime.toString());
@@ -40,18 +40,49 @@ export async function getWeatherForecast(
 	// 	nextMorningString
 	// );
 
-	const e = timeseries.find((ee: any) => {
+	let e = timeseries.find((ee: any) => {
 		if (ee.time === nextMorningString) {
 			return ee;
 		}
 	});
-	// console.log(e);
-	const next_day: WeatherDetails = {
+	const next_day1: WeatherDetails = {
 		time: nextMorning.toDateString(),
 		symbol_code: e.data.next_12_hours.summary.symbol_code,
 		high_air_temperature: e.data.next_6_hours.details.air_temperature_max,
 		low_air_temperature: e.data.next_6_hours.details.air_temperature_min,
 	};
+	// next next day
+	nextMorning.setDate(nextMorning.getDate() + 1);
+	nextMorningString = nextMorning.toISOString().substring(0, 19) + "Z"; // UTC
+
+	e = timeseries.find((ee: any) => {
+		if (ee.time === nextMorningString) {
+			return ee;
+		}
+	});
+	const next_day2: WeatherDetails = {
+		time: nextMorning.toDateString(),
+		symbol_code: e.data.next_12_hours.summary.symbol_code,
+		high_air_temperature: e.data.next_6_hours.details.air_temperature_max,
+		low_air_temperature: e.data.next_6_hours.details.air_temperature_min,
+	};
+	// next next next day
+	nextMorning.setDate(nextMorning.getDate() + 1);
+	nextMorningString = nextMorning.toISOString().substring(0, 19) + "Z"; // UTC
+
+	e = timeseries.find((ee: any) => {
+		if (ee.time === nextMorningString) {
+			return ee;
+		}
+	});
+	const next_day3: WeatherDetails = {
+		time: nextMorning.toDateString(),
+		symbol_code: e.data.next_12_hours.summary.symbol_code,
+		high_air_temperature: e.data.next_6_hours.details.air_temperature_max,
+		low_air_temperature: e.data.next_6_hours.details.air_temperature_min,
+	};
+	// console.log(e);
+
 	// console.log(next_day);
 
 	return {
@@ -65,6 +96,6 @@ export async function getWeatherForecast(
 			wind_speed: wind_speed, // m/s
 			symbol_code: symbol_code,
 		},
-		timeseries: [next_day],
+		timeseries: [next_day1, next_day2, next_day3],
 	};
 }
