@@ -17,7 +17,6 @@ export const getWeatherInformation = async (
 			latitude,
 			longitude
 		);
-
 		res.json({ geoLocation, weatherInformation }).status(200);
 	} catch ({ message }: any) {
 		res.json(message);
