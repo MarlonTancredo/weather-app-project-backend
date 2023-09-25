@@ -11,9 +11,9 @@ const allowCrossDomain = (req: any, res: any, next: any) => {
 };
 
 export const app = express();
-app.use(cors);
 app.use(express.json());
 app.use(allowCrossDomain);
+app.use(cors());
 app.use("/", router);
 app.get("/", (req, res) => res.send("Welcome to Weather App!"));
 app.get("/*", (req, res) => res.send("Not Found!"));
