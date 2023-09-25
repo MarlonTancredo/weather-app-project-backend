@@ -4,7 +4,7 @@ import { fetchWeatherFromAPI } from "../repository/fetch_weather_from_api";
 export async function getWeatherForecast(
 	latitude = 51.50853,
 	longitude = -0.12574,
-	timeDifference = 0
+	timeDifference = 4
 ) {
 	const data = await fetchWeatherFromAPI(latitude, longitude);
 	console.log("getWeatherForecast works");
@@ -48,8 +48,8 @@ export async function getWeatherForecast(
 
 	const nextMorning = new Date(localTime);
 	nextMorning.setDate(localTime.getDate() + 1);
-	nextMorning.setHours(9, 0, 0); // Local time
-	let nextMorningString = nextMorning.toISOString().substring(0, 19) + "Z"; // UTC
+	// nextMorning.setHours(9, 0, 0); // Local time
+	let nextMorningString = nextMorning.toISOString().split('T')[0] + "T06:00:00Z"; // UTC
 
 	let nextDays: Array<WeatherDetails | undefined> = [];
 	for (let i = 0; i <= 2; i++) {
@@ -58,7 +58,7 @@ export async function getWeatherForecast(
 			nextDays.push(e);
 			nextMorning.setDate(nextMorning.getDate() + 1);
 			nextMorningString =
-				nextMorning.toISOString().substring(0, 19) + "Z"; // UTC
+				nextMorning.toISOString().split('T')[0] + "T06:00:00Z"; // UTC
 		} else break;
 	}
 
