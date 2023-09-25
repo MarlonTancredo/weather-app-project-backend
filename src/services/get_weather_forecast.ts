@@ -23,6 +23,7 @@ export async function getWeatherForecast(
 	const timeseries = data.properties.timeseries;
 
 	function nextDayData(nextMorningString: string) {
+		console.log(nextMorningString);
 		const e = timeseries.find((ee: any) => ee.time === nextMorningString);
 		if (e) {
 			return {
