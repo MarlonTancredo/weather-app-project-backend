@@ -15,10 +15,9 @@ export async function getWeatherForecast(
 	const current_day = data.properties.timeseries[0];
 	const { air_temperature, wind_from_direction, wind_speed } =
 		current_day.data.instant.details;
-	const { symbol_code } = current_day;
+	const { symbol_code } = current_day.data.next_12_hours.summary;
 	const { air_temperature_max, air_temperature_min } =
 		current_day.data.next_6_hours.details;
-
 	// data for next days
 	const timeseries = data.properties.timeseries;
 

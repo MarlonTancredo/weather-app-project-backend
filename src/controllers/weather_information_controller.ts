@@ -14,7 +14,6 @@ export const getWeatherInformation = async (
 		const { latitude, longitude } = geoLocation;
 
 		const localTime = await fetchLocalTimeFromAPI(geoLocation.timezone);
-		console.log(localTime);
 
 		const weatherInformation = await getWeatherForecast(
 			latitude,
