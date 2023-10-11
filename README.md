@@ -28,7 +28,7 @@ Testing: npm test
 
 ```typescript
 
-`http://localhost:3000/weather/?cityName=${London}`
+`http://localhost:3000/weather/?cityName=${Karaganda}`
 
 //Api return a JSON with current weather given a city name endpoint:
 {
@@ -86,3 +86,4 @@ Testing: npm test
         ]
     }
 }
+```

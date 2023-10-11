@@ -4,10 +4,10 @@ import cors from "cors";
 
 // CORS middleware
 const allowCrossDomain = (req: any, res: any, next: any) => {
-  res.header(`Access-Control-Allow-Origin`, `http://localhost:3000`);
-  res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
-  res.header(`Access-Control-Allow-Headers`, `Content-Type`);
-  next();
+    res.header(`Access-Control-Allow-Origin`, `http://localhost:3000`);
+    res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
+    res.header(`Access-Control-Allow-Headers`, `Content-Type`);
+    next();
 };
 
 export const app = express();

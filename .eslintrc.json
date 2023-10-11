@@ -1,18 +1,13 @@
 {
-  "root": true,
-  "ignorePatterns": ["**/*"],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
     },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "rules": {}
+    "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
-    {
-      "files": ["*.js", "*.jsx"],
-      "rules": {}
-    }
-  ]
+    "rules": {}
 }
